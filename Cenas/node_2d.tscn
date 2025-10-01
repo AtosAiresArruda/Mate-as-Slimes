@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://27epblnjea6q"]
+
+[ext_resource type="PackedScene" uid="uid://7cmgs035nvml" path="res://Jogador/Jogador.tscn" id="1_ipieb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipieb"]
+size = Vector2(790.5, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ipieb"]
+radius = 51.739735
+
+[node name="Mundo" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ipieb")]
+position = Vector2(327, 587)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(604.5, 615)
+shape = SubResource("RectangleShape2D_ipieb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-185, 615)
+shape = SubResource("RectangleShape2D_ipieb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(780.75, 579)
+shape = SubResource("RectangleShape2D_ipieb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1362, 537)
+shape = SubResource("RectangleShape2D_ipieb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(-178, 745)
+shape = SubResource("CircleShape2D_ipieb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(5, 745)
+shape = SubResource("CircleShape2D_ipieb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(199, 745)
+shape = SubResource("CircleShape2D_ipieb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(396, 748)
+shape = SubResource("CircleShape2D_ipieb")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(590, 754)
+shape = SubResource("CircleShape2D_ipieb")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(1469, 580)
+shape = SubResource("CircleShape2D_ipieb")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(-282, 588)
+shape = SubResource("CircleShape2D_ipieb")

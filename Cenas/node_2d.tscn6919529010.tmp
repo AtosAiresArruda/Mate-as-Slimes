@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://27epblnjea6q"]
+
+[ext_resource type="PackedScene" uid="uid://7cmgs035nvml" path="res://Jogador/Jogador.tscn" id="1_ipieb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipieb"]
+size = Vector2(255, 20)
+
+[node name="Mundo" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ipieb")]
+position = Vector2(327, 587)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(334, 615)
+shape = SubResource("RectangleShape2D_ipieb")
