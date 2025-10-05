@@ -1,6 +1,13 @@
 extends CharacterBody2D
 class_name Jogador
 
+# Imagens utilizadas nesse projeto forão tiradas deste link e re-adaptadas 
+# https://greenpixels.itch.io/pixel-art-assets-5
+
+
+
+
+
 #Adicionando uma referência para o AnimationPlayer // Não sei o que faz
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -23,8 +30,9 @@ var _states = states.IDLE #Salva estado atual e configura quem será o proximo e
 #Padrão GDS
 func _physics_process(delta: float) -> void:
 	#Variaveis de controle, devem sempre serem atualizadas primeiro
-	var direction := Input.get_axis("ui_left", "ui_right")
-	var pular = Input.is_action_just_pressed("ui_accept")
+	var direction := Input.get_axis("Left", "Right")
+	var pular = Input.is_action_just_pressed("Jump")
+	
 	
 	#Atualiza estado atual do personagem
 	states_update(delta, direction, pular, FRICTION)
@@ -42,7 +50,7 @@ func states_update(delta: float, direction: float, pular : int, FRICTION : float
 	if get_states() == states.RUN:
 		go_run(delta, direction, pular, FRICTION)
 	if get_states() == states.JUMPING:
-		go_jump(delta, direction, pular)
+		go_jump(delta, direction)
 	if get_states() == states.FALL:
 		go_fall(delta, pular)
 	#if get_states() == states.JUMPINGJUMPING:
@@ -66,6 +74,7 @@ func go_idle(delta : float, direction: float, pular : int) -> void:
 func go_run(delta : float, direction : float,pular : int, FRICTION : float) -> void:
 	animation.play("Andando")
 	
+	
 	if not direction:
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 		if velocity.x == 0:
@@ -86,7 +95,7 @@ func go_run(delta : float, direction : float,pular : int, FRICTION : float) -> v
 		_states = states.JUMPING
 	
 #Código do personagem pulando
-func go_jump(delta: float, direction : float, pular : int) -> void:
+func go_jump(delta: float, direction : float) -> void:
 	
 	if is_on_floor():
 		animation.play("Pulando")
@@ -99,7 +108,7 @@ func go_jump(delta: float, direction : float, pular : int) -> void:
 	
 #Código do personagem caindo
 #nota: grávidade é aplicada externamente a queda
-func go_fall(delta:float, pular : int):
+func go_fall(delta:float, pular : int) -> void:
 	animation.play("Caindo")
 	
 	if is_on_floor():
@@ -107,8 +116,6 @@ func go_fall(delta:float, pular : int):
 		
 	#if pular and !is_on_floor():
 	#	_states = states.JUMPINGJUMPING
-		
-
 	
 #Função get padrão
 func get_states():

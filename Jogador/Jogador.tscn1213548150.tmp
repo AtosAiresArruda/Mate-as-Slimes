@@ -141,4 +141,4 @@ autoplay = "Idle"
 
 [node name="Node" type="Node" parent="."]
 
-[node name="timer_jumping" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
